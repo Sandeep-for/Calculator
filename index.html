@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            height:100vh;
+            background-color:hsl(0, 0%, 95%);
+
+        }
+        #calculator{
+            font-family:Arial,sans-serif;
+            background-color:hsl(0, 0%, 15%);
+            border-radius: 15px;
+            width:100%;
+            max-width:500px;
+            overflow:hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+
+        }
+        /* input display */
+        #display{
+            width:100%;
+            padding: 1.5rem;
+            font-size:3rem;
+            text-align: left;
+            border:none;
+            background-color:hsl(0, 0%, 15%);
+            color:white;
+
+        }
+        /* button should be arrange properly */
+        #keys{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap:1rem;
+            padding:1.5rem;
+        }
+        /* style all the buttons */
+        button{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border:none;
+            background-color: hsl(0,0%,30%);
+            color:white;
+            font-size: 2rem;
+            font-weight:bold;
+            cursor:pointer
+        }
+        /* lighteness of the buttons */
+        button:hover{
+            background-color: hsl(0, 0%, 40%)
+        }
+        button:active{
+            background-color: hsl(0, 0%, 50%)
+
+        }
+        /* adding different colors to the operators */
+        .operator-btn{
+        background-color: hsl(35, 100%, 55%);
+        }
+        .operator-btn:hover{
+        background-color: hsl(35, 100%, 65%);
+        }
+        .operator-btn:active{
+        background-color: hsl(35, 100%, 75%);
+        }
+        /* Media query for small devices */
+    @media (max-width: 500px) {
+      #display {
+        font-size: 2.5rem;
+        padding: 1rem;
+      }
+
+      button {
+        font-size: 1.5rem;
+      }
+
+      #keys {
+        gap: 0.75rem;
+        padding: 1rem;
+      }
+    }
+    </style>
+</head>
+<body>
+    <!-- calculator Using HTML CSS JAVASCRIPT -->
+     <div id="calculator">
+        <!-- this is an input box only for use readonly property -->
+          <input id="display" readonly>
+          <!-- next div for all the keys -->
+           <div id="keys">
+            <!-- appendDispaly is used to display numbers and characters in the input display -->
+            <button onclick="appendtoDisplay('+')" class="operator-btn">+</button>
+            <button onclick="appendtoDisplay('7')">7</button>
+            <button onclick="appendtoDisplay('8')">8</button>
+            <button onclick="appendtoDisplay('9')">9</button>
+            <button onclick="appendtoDisplay('-')" class="operator-btn">-</button>
+            <button onclick="appendtoDisplay('4')">4</button>
+            <button onclick="appendtoDisplay('5')">5</button>
+            <button onclick="appendtoDisplay('6')">6</button>
+            <button onclick="appendtoDisplay('*')" class="operator-btn">*</button>
+            <button onclick="appendtoDisplay('1')">1</button>
+            <button onclick="appendtoDisplay('2')">2</button>
+            <button onclick="appendtoDisplay('3')">3</button>
+            <button onclick="appendtoDisplay('/')" class="operator-btn">/</button>
+            <button onclick="appendtoDisplay('0')">0</button>
+            <button onclick="appendtoDisplay('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="ClearDisplay('c')" class="operator-btn">C</button>
+           </div>
+     </div>
+     <script>
+        // Display Element
+        const display=document.getElementById("display");
+
+        function appendtoDisplay(input){
+            display.value += input;
+        }
+
+        function ClearDisplay(){
+            display.value ="";
+        }
+
+        function calculate(){
+            try{
+                display.value=eval(display.value);
+            }
+            catch(error){
+                display.value = "Error";
+            }
+        }
+     </script>
+</body>
+</html>
